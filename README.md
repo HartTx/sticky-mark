@@ -22,6 +22,7 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 - **Drag anywhere.** Click and drag it into place.
 - **Hide and summon.** Hides with one shortcut, and comes back next to the mouse pointer.
 - **Four colors.** Pink, blue, yellow, and green, like the paper flags.
+- **Four directions.** Turns 90 degrees clockwise, to point at rows or columns.
 
 ## Keyboard shortcuts
 
@@ -30,6 +31,7 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 | ⌃⌥↓ / ⌃⌥↑ | Move one step down / up |
 | ⌃⌥F | Hide, or show at the mouse pointer |
 | ⌃⌥C | Cycle colors |
+| ⌃⌥R | Turn clockwise |
 
 ⌃⌥ means Control + Option.
 
@@ -55,7 +57,7 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 Sticky Mark is a single [Lua script](init.lua) of about 100 lines that runs inside Hammerspoon:
 
 - An `hs.canvas` draws a five-point arrow polygon at the overlay window level.
-- Global `hs.hotkey` bindings move, recolor, and hide it.
+- Global `hs.hotkey` bindings move, recolor, hide, and rotate it. Rotation is a quarter-turn coordinate transform applied around the flag's center.
 - Dragging uses an `hs.eventtap` that follows the mouse from mouse-down to mouse-up.
 
 ## Requirements

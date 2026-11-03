@@ -4,12 +4,35 @@
 --   Control + Option + Down / Up : move the flag one step down or up
 --   Control + Option + F         : hide the flag, or show it at the mouse pointer
 --   Control + Option + C         : change color (pink, blue, yellow, green)
+--   Control + Option + R         : turn the flag 90 degrees clockwise
+
+require("hs.ipc")         -- lets the hs command reload this config
 
 local STEP = 28          -- how far one key press moves the flag, in pixels
 local W, H = 70, 28       -- flag size
 
 local COLORS = { "#FF2D95", "#1EB8E0", "#E8F000", "#2ECC40" }
 local colorIndex = 1
+local turns = 0           -- quarter turns clockwise: 0 left, 1 up, 2 right, 3 down
+
+-- Arrow pointing left, like the paper flags, turned clockwise n quarter turns
+function arrowShape(n)
+  local points = {
+    { x = 0, y = H / 2 },
+    { x = H / 2, y = 0 },
+    { x = W, y = 0 },
+    { x = W, y = H },
+    { x = H / 2, y = H },
+  }
+  local w, h = W, H
+  for _ = 1, n do
+    for i, p in ipairs(points) do
+      points[i] = { x = h - p.y, y = p.x }
+    end
+    w, h = h, w
+  end
+  return points, w, h
+end
 
 local screen = hs.screen.mainScreen():frame()
 postitFlag = hs.canvas.new({ x = screen.x + screen.w / 2, y = screen.y + 200, w = W, h = H })
@@ -20,14 +43,7 @@ postitFlag:appendElements({
   closed = true,
   action = "fill",
   fillColor = { hex = COLORS[colorIndex], alpha = 0.85 },
-  -- Arrow pointing left, like the paper flags
-  coordinates = {
-    { x = 0, y = H / 2 },
-    { x = H / 2, y = 0 },
-    { x = W, y = 0 },
-    { x = W, y = H },
-    { x = H / 2, y = H },
-  },
+  coordinates = arrowShape(0),
   trackMouseDown = true,
 })
 
@@ -70,11 +86,21 @@ local function nextColor()
   postitFlag[1].fillColor = { hex = COLORS[colorIndex], alpha = 0.85 }
 end
 
+local function rotate()
+  turns = (turns + 1) % 4
+  local points, w, h = arrowShape(turns)
+  local f = postitFlag:frame()
+  local cx, cy = f.x + f.w / 2, f.y + f.h / 2
+  postitFlag:frame({ x = cx - w / 2, y = cy - h / 2, w = w, h = h })
+  postitFlag[1].coordinates = points
+end
+
 local mods = { "ctrl", "alt" }
 hs.hotkey.bind(mods, "down", function() nudge(STEP) end, nil, function() nudge(STEP) end)
 hs.hotkey.bind(mods, "up", function() nudge(-STEP) end, nil, function() nudge(-STEP) end)
 hs.hotkey.bind(mods, "F", toggle)
 hs.hotkey.bind(mods, "C", nextColor)
+hs.hotkey.bind(mods, "R", rotate)
 
 postitFlag:show()
 hs.alert.show("Post-it flag ready")
