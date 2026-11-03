@@ -33,7 +33,7 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 | ⌃⌥C | Cycle colors |
 | ⌃⌥R | Turn clockwise |
 
-⌃⌥ means Control + Option.
+⌃⌥ means Control + Option. See [Keyboard shortcuts](docs/keyboard-shortcuts.md) for details and tips.
 
 ## Quick start
 
@@ -52,6 +52,8 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 3. Open Hammerspoon, and turn it on in **System Settings > Privacy & Security > Accessibility**.
 4. In the Hammerspoon menu bar icon, click **Reload Config**. A pink arrow appears.
 
+For the full guide, including permissions and uninstalling, see [Installation and setup](docs/installation.md).
+
 ## How it works
 
 Sticky Mark is a single [Lua script](init.lua) of about 100 lines that runs inside Hammerspoon:
@@ -59,6 +61,19 @@ Sticky Mark is a single [Lua script](init.lua) of about 100 lines that runs insi
 - An `hs.canvas` draws a five-point arrow polygon at the overlay window level.
 - Global `hs.hotkey` bindings move, recolor, hide, and rotate it. Rotation is a quarter-turn coordinate transform applied around the flag's center.
 - Dragging uses an `hs.eventtap` that follows the mouse from mouse-down to mouse-up.
+
+Read [How Sticky Mark works](docs/architecture.md) for the full design, including the rotation math and design decisions.
+
+## Documentation
+
+| Document | Read it when you want to… |
+| --- | --- |
+| [Keyboard shortcuts](docs/keyboard-shortcuts.md) | Look up a shortcut. |
+| [Installation and setup](docs/installation.md) | Install it or rebuild it on a new Mac. |
+| [How Sticky Mark works](docs/architecture.md) | Understand the design and the code. |
+| [Configuration](docs/configuration.md) | Change the size, colors, step distance, or shortcuts. |
+| [Troubleshooting](docs/troubleshooting.md) | Fix something that isn't working. |
+| [Changelog](CHANGELOG.md) | See what changed in each version. |
 
 ## Requirements
 
@@ -68,7 +83,7 @@ Sticky Mark is a single [Lua script](init.lua) of about 100 lines that runs insi
 
 ## Built with Claude Code
 
-I designed Sticky Mark around my own workflow and built it with [Claude Code](https://claude.com/claude-code) as a pair programmer. I set the requirements, tested each version on my own setup, and directed the fixes. Claude wrote most of the code, and it's credited as a co-author on each commit.
+I designed Sticky Mark around my own workflow and built it with [Claude Code](https://claude.com/claude-code) as a pair programmer. I set the requirements, tested each version on my own setup, and directed the fixes. Claude wrote most of the code and documentation, and it's credited as a co-author on each commit.
 
 ## License
 
