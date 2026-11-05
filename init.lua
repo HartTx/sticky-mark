@@ -5,6 +5,7 @@
 --   Control + Option + F         : hide the flag, or show it at the mouse pointer
 --   Control + Option + C         : change color (pink, blue, yellow, green)
 --   Control + Option + R         : turn the flag 90 degrees clockwise
+--   Control + Option + E         : turn the flag 90 degrees counterclockwise
 
 require("hs.ipc")         -- lets the hs command reload this config
 
@@ -86,8 +87,9 @@ local function nextColor()
   postitFlag[1].fillColor = { hex = COLORS[colorIndex], alpha = 0.85 }
 end
 
-local function rotate()
-  turns = (turns + 1) % 4
+-- dir is 1 for clockwise, -1 for counterclockwise
+local function rotate(dir)
+  turns = (turns + dir) % 4
   local points, w, h = arrowShape(turns)
   local f = postitFlag:frame()
   local cx, cy = f.x + f.w / 2, f.y + f.h / 2
@@ -100,7 +102,8 @@ hs.hotkey.bind(mods, "down", function() nudge(STEP) end, nil, function() nudge(S
 hs.hotkey.bind(mods, "up", function() nudge(-STEP) end, nil, function() nudge(-STEP) end)
 hs.hotkey.bind(mods, "F", toggle)
 hs.hotkey.bind(mods, "C", nextColor)
-hs.hotkey.bind(mods, "R", rotate)
+hs.hotkey.bind(mods, "R", function() rotate(1) end)
+hs.hotkey.bind(mods, "E", function() rotate(-1) end)
 
 postitFlag:show()
 hs.alert.show("Post-it flag ready")

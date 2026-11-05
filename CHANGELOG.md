@@ -4,6 +4,16 @@ All notable changes to Sticky Mark are documented here. The newest version is fi
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-11-05
+
+### Added
+
+- **Counterclockwise rotate shortcut (⌃⌥E).** Turns the flag 90 degrees counterclockwise: left, down, right, up. E sits to the left of R, matching the direction it turns.
+
+### Changed
+
+- `rotate()` now takes a direction, `rotate(1)` for clockwise or `rotate(-1)` for counterclockwise. ⌃⌥R still turns clockwise.
+
 ## [1.1.0] - 2026-11-03
 
 ### Added
@@ -25,5 +35,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - ⌃⌥F to hide the flag, or show it next to the mouse pointer.
 - ⌃⌥C to cycle through pink, blue, yellow, and green.
 
+[1.2.0]: https://github.com/HartTx/sticky-mark/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/HartTx/sticky-mark/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/HartTx/sticky-mark/releases/tag/v1.0.0

@@ -22,7 +22,7 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 - **Drag anywhere.** Click and drag it into place.
 - **Hide and summon.** Hides with one shortcut, and comes back next to the mouse pointer.
 - **Four colors.** Pink, blue, yellow, and green, like the paper flags.
-- **Four directions.** Turns 90 degrees clockwise, to point at rows or columns.
+- **Four directions.** Turns 90 degrees clockwise or counterclockwise, to point at rows or columns.
 
 ## Keyboard shortcuts
 
@@ -31,7 +31,7 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 | ⌃⌥↓ / ⌃⌥↑ | Move one step down / up |
 | ⌃⌥F | Hide, or show at the mouse pointer |
 | ⌃⌥C | Cycle colors |
-| ⌃⌥R | Turn clockwise |
+| ⌃⌥R / ⌃⌥E | Turn clockwise / counterclockwise |
 
 ⌃⌥ means Control + Option. See [Keyboard shortcuts](docs/keyboard-shortcuts.md) for details and tips.
 

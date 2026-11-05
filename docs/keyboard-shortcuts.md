@@ -11,6 +11,7 @@ All shortcuts use **Control + Option** (⌃⌥) plus one more key. They work in 
 | Control + Option + F | ⌃⌥F | Hide the flag. If it's hidden, show it next to the mouse pointer. |
 | Control + Option + C | ⌃⌥C | Change the color: pink → blue → yellow → green → pink. |
 | Control + Option + R | ⌃⌥R | Turn the flag 90 degrees clockwise: left → up → right → down → left. |
+| Control + Option + E | ⌃⌥E | Turn the flag 90 degrees counterclockwise: left → down → right → up → left. |
 
 ## Mouse actions
 
@@ -21,7 +22,8 @@ All shortcuts use **Control + Option** (⌃⌥) plus one more key. They work in 
 ## Tips
 
 - **Find a lost flag:** Press ⌃⌥F twice. The first press hides it; the second brings it back next to your mouse pointer.
-- **Point at a column instead of a row:** Press ⌃⌥R to point the flag down, then drag it above the column.
+- **Point at a column instead of a row:** Press ⌃⌥E once to point the flag down, then drag it above the column.
+- **Remember which rotate key is which:** E is to the left of R, and ⌃⌥E turns the flag the other way (to the left).
 - **Mark two things at once:** Sticky Mark has one flag. To add more, see [Configuration](configuration.md).
 
 To change these shortcuts, see [Change the keyboard shortcuts](configuration.md#change-the-keyboard-shortcuts).

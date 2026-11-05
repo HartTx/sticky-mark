@@ -49,7 +49,7 @@ Find the problem you're seeing, then follow the fix.
 
 **Cause:** Hammerspoon restarted or the configuration reloaded. Sticky Mark doesn't save its state yet.
 
-- This is expected. Press ⌃⌥C and ⌃⌥R to get back to the color and direction you want.
+- This is expected. Press ⌃⌥C, and ⌃⌥R or ⌃⌥E, to get back to the color and direction you want.
 
 ## The script shows an error
 

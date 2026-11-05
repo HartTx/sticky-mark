@@ -24,7 +24,7 @@ After that, the script does nothing until you press a shortcut or click the flag
 │   │      └── element 1: filled 5-point polygon                   │
 │   ├── mouseCallback ──── starts a drag on mouse-down             │
 │   │      └── postitDrag (hs.eventtap) ── follows the mouse       │
-│   ├── hs.hotkey bindings ── ⌃⌥ ↓ ↑ F C R                        │
+│   ├── hs.hotkey bindings ── ⌃⌥ ↓ ↑ F C R E                      │
 │   │      └── nudge / toggle / nextColor / rotate                 │
 │   └── hs.ipc ──── lets the `hs` terminal command talk to it      │
 │                                                                  │
@@ -75,7 +75,7 @@ new y = old x
 
 The box then swaps dimensions: the new width is the old height, and the new height is the old width. The function applies this formula *n* times.
 
-The `rotate()` function adds one to the turn counter (wrapping from 3 back to 0), gets the new shape, and resizes the canvas around its **center point**. Keeping the center fixed means the flag turns in place instead of jumping sideways.
+The `rotate(dir)` function adds `dir` to the turn counter: `1` for clockwise (⌃⌥R) or `−1` for counterclockwise (⌃⌥E). The counter wraps with `% 4`. In Lua, `%` always returns a non-negative result for a positive divisor, so turning counterclockwise from 0 gives 3 (down) rather than −1. A counterclockwise turn is three clockwise turns, so `arrowShape` only needs the clockwise formula. The function then gets the new shape and resizes the canvas around its **center point**. Keeping the center fixed means the flag turns in place instead of jumping sideways.
 
 | `turns` | Direction | Box size |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ Event taps watch input from every app, so macOS requires **Accessibility** permi
 | `nudge(dy)` | Moves the canvas up or down by `dy` pixels. The arrow keys pass `+STEP` or `−STEP`. |
 | `toggle()` | Hides the canvas if it's showing. Otherwise, moves it next to the mouse pointer and shows it. |
 | `nextColor()` | Moves to the next color in the `COLORS` list (wrapping around) and updates the arrow's fill. |
-| `rotate()` | Turns the arrow 90 degrees clockwise. See [Rotation](#rotation). |
+| `rotate(dir)` | Turns the arrow 90 degrees clockwise (`dir = 1`) or counterclockwise (`dir = -1`). See [Rotation](#rotation). |
 
 The arrow-key shortcuts pass the same function twice: once as the *pressed* action and once as the *repeat* action. That's what makes the flag keep moving when you hold the keys down.
 

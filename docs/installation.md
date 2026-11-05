@@ -77,6 +77,7 @@ Test each feature. All of these should work:
 | Press ⌃⌥↓ | The flag moves down a little. |
 | Press ⌃⌥C | The flag turns blue. |
 | Press ⌃⌥R | The flag points up. |
+| Press ⌃⌥E | The flag points left again. |
 | Press ⌃⌥F twice | The flag disappears, then reappears next to the mouse pointer. |
 
 If anything doesn't work, see [Troubleshooting](troubleshooting.md).
