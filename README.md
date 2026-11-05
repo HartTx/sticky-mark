@@ -13,7 +13,7 @@ A floating digital Post-it flag for macOS that marks your place in step-by-step 
 
 When I follow written instructions, I used to stick a Post-it arrow flag on my monitor next to the current step, then move it down as I went. When I looked back at the screen, my eye went straight to the right place.
 
-Sticky Mark does the same thing digitally. A colored arrow floats on top of every window. You park it next to the step you're on, and move it down one step with a keystroke.
+Sticky Mark does the same thing digitally. A colored arrow floats on top of every window. You park it next to the step you're on, and move it down one step with a keystroke or a Stream Deck button.
 
 ## Features
 
@@ -21,8 +21,9 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 - **Step-by-step movement.** Moves one line down or up with a shortcut. Hold the keys to keep moving.
 - **Drag anywhere.** Click and drag it into place.
 - **Hide and summon.** Hides with one shortcut, and comes back next to the mouse pointer.
-- **Four colors.** Pink, blue, yellow, and green, like the paper flags.
+- **Four colors.** Pink, blue, yellow, and green, like the paper flags, each with its own shortcut.
 - **Four directions.** Turns 90 degrees clockwise or counterclockwise, to point at rows or columns.
+- **Stream Deck friendly.** Every action is a single key combination, so each can be its own button.
 
 ## Keyboard shortcuts
 
@@ -31,9 +32,10 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 | ⌃⌥↓ / ⌃⌥↑ | Move one step down / up |
 | ⌃⌥F | Hide, or show at the mouse pointer |
 | ⌃⌥C | Cycle colors |
+| ⌃⌥1 – ⌃⌥4 | Pink, blue, yellow, green |
 | ⌃⌥R / ⌃⌥E | Turn clockwise / counterclockwise |
 
-⌃⌥ means Control + Option. See [Keyboard shortcuts](docs/keyboard-shortcuts.md) for details and tips.
+⌃⌥ means Control + Option. See [Keyboard shortcuts](docs/keyboard-shortcuts.md) for details and Stream Deck setup.
 
 ## Quick start
 
@@ -68,7 +70,7 @@ Read [How Sticky Mark works](docs/architecture.md) for the full design, includin
 
 | Document | Read it when you want to… |
 | --- | --- |
-| [Keyboard shortcuts](docs/keyboard-shortcuts.md) | Look up a shortcut. |
+| [Keyboard shortcuts](docs/keyboard-shortcuts.md) | Look up a shortcut or set up a Stream Deck. |
 | [Installation and setup](docs/installation.md) | Install it or rebuild it on a new Mac. |
 | [How Sticky Mark works](docs/architecture.md) | Understand the design and the code. |
 | [Configuration](docs/configuration.md) | Change the size, colors, step distance, or shortcuts. |

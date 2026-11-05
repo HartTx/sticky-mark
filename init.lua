@@ -4,6 +4,7 @@
 --   Control + Option + Down / Up : move the flag one step down or up
 --   Control + Option + F         : hide the flag, or show it at the mouse pointer
 --   Control + Option + C         : change color (pink, blue, yellow, green)
+--   Control + Option + 1 to 4    : pink, blue, yellow, green
 --   Control + Option + R         : turn the flag 90 degrees clockwise
 --   Control + Option + E         : turn the flag 90 degrees counterclockwise
 
@@ -82,9 +83,13 @@ local function toggle()
   end
 end
 
-local function nextColor()
-  colorIndex = colorIndex % #COLORS + 1
+local function setColor(i)
+  colorIndex = i
   postitFlag[1].fillColor = { hex = COLORS[colorIndex], alpha = 0.85 }
+end
+
+local function nextColor()
+  setColor(colorIndex % #COLORS + 1)
 end
 
 -- dir is 1 for clockwise, -1 for counterclockwise
@@ -102,6 +107,9 @@ hs.hotkey.bind(mods, "down", function() nudge(STEP) end, nil, function() nudge(S
 hs.hotkey.bind(mods, "up", function() nudge(-STEP) end, nil, function() nudge(-STEP) end)
 hs.hotkey.bind(mods, "F", toggle)
 hs.hotkey.bind(mods, "C", nextColor)
+for i = 1, math.min(#COLORS, 9) do
+  hs.hotkey.bind(mods, tostring(i), function() setColor(i) end)
+end
 hs.hotkey.bind(mods, "R", function() rotate(1) end)
 hs.hotkey.bind(mods, "E", function() rotate(-1) end)
 

@@ -33,6 +33,14 @@ Find the problem you're seeing, then follow the fix.
 
 - Press ⌃⌥F twice. The flag reappears next to your mouse pointer.
 
+## A Stream Deck button doesn't work
+
+**Cause:** The button sends a different key combination than Sticky Mark expects.
+
+1. In the Stream Deck app, select the button and check its **Hotkey** field. It should show Control, Option, and the key, for example ⌃⌥1.
+2. If it doesn't, click the field and press the shortcut again on your keyboard.
+3. Test the same shortcut on your keyboard. If the keyboard works but the button doesn't, quit and reopen the Stream Deck app.
+
 ## The flag disappears over some apps
 
 **Cause:** The app is in full-screen mode, which can hide floating windows.
@@ -49,7 +57,7 @@ Find the problem you're seeing, then follow the fix.
 
 **Cause:** Hammerspoon restarted or the configuration reloaded. Sticky Mark doesn't save its state yet.
 
-- This is expected. Press ⌃⌥C, and ⌃⌥R or ⌃⌥E, to get back to the color and direction you want.
+- This is expected. Press a color key (⌃⌥1 to ⌃⌥4), and ⌃⌥R or ⌃⌥E, to get back to the color and direction you want.
 
 ## The script shows an error
 

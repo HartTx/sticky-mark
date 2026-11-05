@@ -24,8 +24,8 @@ After that, the script does nothing until you press a shortcut or click the flag
 │   │      └── element 1: filled 5-point polygon                   │
 │   ├── mouseCallback ──── starts a drag on mouse-down             │
 │   │      └── postitDrag (hs.eventtap) ── follows the mouse       │
-│   ├── hs.hotkey bindings ── ⌃⌥ ↓ ↑ F C R E                      │
-│   │      └── nudge / toggle / nextColor / rotate                 │
+│   ├── hs.hotkey bindings ── ⌃⌥ ↓ ↑ F C 1-4 R E                  │
+│   │      └── nudge / toggle / setColor / nextColor / rotate      │
 │   └── hs.ipc ──── lets the `hs` terminal command talk to it      │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
@@ -103,8 +103,11 @@ Event taps watch input from every app, so macOS requires **Accessibility** permi
 | --- | --- |
 | `nudge(dy)` | Moves the canvas up or down by `dy` pixels. The arrow keys pass `+STEP` or `−STEP`. |
 | `toggle()` | Hides the canvas if it's showing. Otherwise, moves it next to the mouse pointer and shows it. |
-| `nextColor()` | Moves to the next color in the `COLORS` list (wrapping around) and updates the arrow's fill. |
+| `setColor(i)` | Sets the arrow's fill to color number `i` in the `COLORS` list. ⌃⌥1 to ⌃⌥4 call it directly. |
+| `nextColor()` | Calls `setColor` with the next color in the list, wrapping from the last back to the first. ⌃⌥C calls it. |
 | `rotate(dir)` | Turns the arrow 90 degrees clockwise (`dir = 1`) or counterclockwise (`dir = -1`). See [Rotation](#rotation). |
+
+The color number shortcuts are created in a loop, one for each entry in `COLORS` (up to 9), so adding a color to the list adds its shortcut automatically.
 
 The arrow-key shortcuts pass the same function twice: once as the *pressed* action and once as the *repeat* action. That's what makes the flag keep moving when you hold the keys down.
 
@@ -128,7 +131,7 @@ hs -c 'hs.reload()'
 | `arrowShape` | Builds the arrow's corner points for any direction. |
 | `hs.canvas.new` block | Creates the floating window and the arrow. |
 | `mouseCallback` block | Moves the flag with the mouse. |
-| `nudge`, `toggle`, `nextColor`, `rotate` | One function per action. |
+| `nudge`, `toggle`, `setColor`, `nextColor`, `rotate` | One function per action. |
 | `hs.hotkey.bind` lines | Connect keys to actions. |
 | Last two lines | Show the flag and confirm it loaded. |
 

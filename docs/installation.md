@@ -76,6 +76,7 @@ Test each feature. All of these should work:
 | Drag the flag | The flag follows the mouse. |
 | Press ⌃⌥↓ | The flag moves down a little. |
 | Press ⌃⌥C | The flag turns blue. |
+| Press ⌃⌥3 | The flag turns yellow. |
 | Press ⌃⌥R | The flag points up. |
 | Press ⌃⌥E | The flag points left again. |
 | Press ⌃⌥F twice | The flag disappears, then reappears next to the mouse pointer. |

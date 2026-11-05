@@ -27,8 +27,8 @@ Reloading resets the flag to its starting position, color, and direction.
 | `STEP` | `28` | Pixels the flag moves per arrow-key press. |
 | `W` | `70` | Flag length in pixels (when pointing left or right). |
 | `H` | `28` | Flag thickness in pixels (when pointing left or right). |
-| `COLORS` | Pink, blue, yellow, green | Colors that ⌃⌥C cycles through. The first one is the starting color. |
-| `alpha` | `0.85` | Opacity, from `0` (invisible) to `1` (solid). Appears twice: in the canvas setup and in `nextColor`. |
+| `COLORS` | Pink, blue, yellow, green | Colors that ⌃⌥C cycles through. The first one is the starting color. Each color also gets a number shortcut by its position in the list: ⌃⌥1 for the first, ⌃⌥2 for the second, and so on, up to 9. |
+| `alpha` | `0.85` | Opacity, from `0` (invisible) to `1` (solid). Appears twice: in the canvas setup and in `setColor`. |
 | `mods` | `{ "ctrl", "alt" }` | The modifier keys used by every shortcut. |
 
 ## Change the step distance
@@ -59,9 +59,11 @@ local COLORS = { "#FF2D95", "#FF8C00", "#9B59B6" }
 
 To start with a different color, put it first.
 
+The number shortcuts follow the list order, so reordering or adding colors changes which number gives which color. Update your Stream Deck labels and [Keyboard shortcuts](keyboard-shortcuts.md) to match.
+
 ## Change the opacity
 
-Change `alpha = 0.85` in **both** places it appears: the `appendElements` block and the `nextColor` function. If you only change one, the flag changes opacity the first time you press ⌃⌥C.
+Change `alpha = 0.85` in **both** places it appears: the `appendElements` block and the `setColor` function. If you only change one, the flag changes opacity the first time you change its color.
 
 ## Change the keyboard shortcuts
 
