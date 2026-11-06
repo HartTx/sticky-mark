@@ -10,6 +10,9 @@
 
 require("hs.ipc")         -- lets the hs command reload this config
 
+-- macOS only lets apps without a Dock icon draw over other apps' full-screen spaces
+hs.dockicon.hide()
+
 local STEP = 28          -- how far one key press moves the flag, in pixels
 local W, H = 70, 28       -- flag size
 

@@ -26,7 +26,8 @@ After that, the script does nothing until you press a shortcut or click the flag
 │   │      └── postitDrag (hs.eventtap) ── follows the mouse       │
 │   ├── hs.hotkey bindings ── ⌃⌥ ↓ ↑ F C 1-4 R E                  │
 │   │      └── nudge / toggle / setColor / nextColor / rotate      │
-│   └── hs.ipc ──── lets the `hs` terminal command talk to it      │
+│   ├── hs.ipc ──── lets the `hs` terminal command talk to it      │
+│   └── hs.dockicon.hide() ── allows drawing over full-screen apps │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
 ```
@@ -119,6 +120,15 @@ The line `require("hs.ipc")` loads Hammerspoon's inter-process communication mod
 hs -c 'hs.reload()'
 ```
 
+### Full-screen apps
+
+Each app in full-screen mode runs in its own Space. Getting the flag on top of those Spaces takes two settings, and neither works alone:
+
+1. **`fullScreenAuxiliary` window behavior.** Marks the canvas as allowed to join another app's full-screen Space. `canJoinAllSpaces` covers only regular desktops.
+2. **No Dock icon (`hs.dockicon.hide()`).** macOS honors `fullScreenAuxiliary` only for *accessory* apps, which have no Dock icon. A regular app with a Dock icon can't draw into another app's full-screen Space, whatever its window settings are.
+
+Version 1.4 added the first setting, but the flag stayed hidden until version 1.5 added the second.
+
 ## Code map
 
 [`init.lua`](../init.lua) reads top to bottom in this order:
@@ -127,6 +137,7 @@ hs -c 'hs.reload()'
 | --- | --- |
 | Header comment | Lists the controls, so the file explains itself. |
 | `require("hs.ipc")` | Enables the `hs` command-line tool. |
+| `hs.dockicon.hide()` | Runs Hammerspoon as an accessory app, so the flag can appear over full-screen apps. |
 | `STEP` to `turns` | Settings you can change, plus the current color and direction. |
 | `arrowShape` | Builds the arrow's corner points for any direction. |
 | `hs.canvas.new` block | Creates the floating window and the arrow. |
@@ -146,6 +157,7 @@ hs -c 'hs.reload()'
 | [`hs.screen`](https://www.hammerspoon.org/docs/hs.screen.html) | Finding the main screen for the starting position |
 | [`hs.alert`](https://www.hammerspoon.org/docs/hs.alert.html) | The "ready" message |
 | [`hs.ipc`](https://www.hammerspoon.org/docs/hs.ipc.html) | Terminal control |
+| [`hs.dockicon`](https://www.hammerspoon.org/docs/hs.dockicon.html) | Hiding the Dock icon for full-screen support |
 
 ## Design decisions
 
@@ -162,7 +174,7 @@ hs -c 'hs.reload()'
 
 - **State isn't saved.** Position, color, and direction reset when Hammerspoon restarts or reloads. The flag always starts pointing left, in pink, near the top middle of the main screen.
 - **Toggle position after rotating.** When the flag is pointing up or down, ⌃⌥F places it slightly off center from the mouse pointer, because `toggle()` uses the original box height for its offset.
-- **Full-screen apps.** Each full-screen app is its own Space. `canJoinAllSpaces` alone doesn't include those Spaces, which is why version 1.4 added `fullScreenAuxiliary`. Without it, the flag only shows on the regular desktop.
+- **No Dock icon.** To appear over full-screen apps, Hammerspoon runs without a Dock icon, so it doesn't appear in the Dock or the Command + Tab app switcher. Use the hammer icon in the menu bar instead. See [Full-screen apps](#full-screen-apps).
 - **Shortcut conflicts.** If another app uses the same ⌃⌥ shortcut, whichever app registered it first usually wins.
 
 Back to [README](../README.md).

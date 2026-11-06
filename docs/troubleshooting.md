@@ -43,16 +43,23 @@ Find the problem you're seeing, then follow the fix.
 
 ## The flag disappears over some apps
 
-**Cause:** The app is in full-screen mode, and the script is missing the `fullScreenAuxiliary` setting. Versions before 1.4 had this problem.
+**Cause:** The app is in full-screen mode, and the script is missing one of the two settings full-screen support needs. Versions before 1.5 had this problem.
 
-1. Open `~/.hammerspoon/init.lua` and find the line that starts with `postitFlag:behavior`.
-2. Make sure it includes `"fullScreenAuxiliary"`:
+1. Open `~/.hammerspoon/init.lua`.
+2. Near the top, make sure this line exists:
+
+   ```lua
+   hs.dockicon.hide()
+   ```
+
+3. Find the line that starts with `postitFlag:behavior`, and make sure it includes `"fullScreenAuxiliary"`:
 
    ```lua
    postitFlag:behavior({ "canJoinAllSpaces", "stationary", "fullScreenAuxiliary" })
    ```
 
-3. Save the file, then click the hammer icon and click **Reload Config**.
+4. Save the file, then click the hammer icon and click **Reload Config**.
+5. Check that Hammerspoon's icon is gone from the Dock. If it's still there, open Hammerspoon's **Preferences** and clear **Show dock icon**.
 
 If the flag still doesn't appear, exit full-screen mode (press **Control + Command + F**) and use the app in a large regular window instead.
 
@@ -84,6 +91,12 @@ If the flag still doesn't appear, exit full-screen mode (press **Control + Comma
    - A missing `end`, closing bracket `}`, or closing quote.
    - Curly quotes (“ ”) instead of straight quotes (" "). TextEdit can add these automatically. To stop it, click **Edit > Substitutions** and turn off **Smart Quotes**.
 4. If you can't find the problem, replace it with a fresh copy of [init.lua](../init.lua) from this repository, then reload.
+
+## Hammerspoon is missing from the Dock
+
+**Cause:** This is expected. Since version 1.5, Hammerspoon runs without a Dock icon so the flag can appear over full-screen apps.
+
+- Use the hammer icon in the menu bar to reload, open the Console, or open Preferences.
 
 ## The `hs` command says it can't connect
 

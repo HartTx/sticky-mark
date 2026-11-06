@@ -63,7 +63,7 @@ Sticky Mark is a single [Lua script](init.lua) of about 100 lines that runs insi
 - An `hs.canvas` draws a five-point arrow polygon at the overlay window level.
 - Global `hs.hotkey` bindings move, recolor, hide, and rotate it. Rotation is a quarter-turn coordinate transform applied around the flag's center.
 - Dragging uses an `hs.eventtap` that follows the mouse from mouse-down to mouse-up.
-- The `fullScreenAuxiliary` window behavior lets it appear over full-screen apps.
+- Appearing over full-screen apps takes two settings together: the `fullScreenAuxiliary` window behavior, and running Hammerspoon as an accessory app with no Dock icon. Finding the second one was the trickiest bug in the project. See the [changelog](CHANGELOG.md) for 1.4.0 and 1.5.0.
 
 Read [How Sticky Mark works](docs/architecture.md) for the full design, including the rotation math and design decisions.
 
@@ -86,7 +86,7 @@ Read [How Sticky Mark works](docs/architecture.md) for the full design, includin
 
 ## Built with Claude Code
 
-I designed Sticky Mark around my own workflow and built it with [Claude Code](https://claude.com/claude-code) as a pair programmer. I set the requirements, tested each version on my own setup, and directed the fixes. Claude wrote most of the code and documentation, and it's credited as a co-author on each commit.
+I designed Sticky Mark around my own workflow and built it with [Claude Code](https://claude.com/claude-code) as a pair programmer. I set the requirements, tested each version on my own setup, and directed the fixes. That included tracking down why the flag disappeared over full-screen apps. Claude wrote most of the code and documentation, and it's credited as a co-author on each commit.
 
 ## License
 

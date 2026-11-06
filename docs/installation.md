@@ -62,6 +62,8 @@ If you don't want to use Homebrew, you can download Hammerspoon from [hammerspoo
 
    A "Post-it flag ready" message appears, and a pink arrow appears near the top middle of the screen.
 
+Hammerspoon's icon disappears from the Dock. That's expected: the script hides it so the flag can appear over full-screen apps.
+
 ## Step 4: Start Hammerspoon automatically
 
 1. Click the Hammerspoon icon in the menu bar, then click **Preferences**.

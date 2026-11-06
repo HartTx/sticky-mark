@@ -4,11 +4,21 @@ All notable changes to Sticky Mark are documented here. The newest version is fi
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project uses [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] - 2026-11-06
+
+### Fixed
+
+- **The flag now really appears over full-screen apps.** The 1.4.0 setting wasn't enough, because macOS only lets apps without a Dock icon draw into another app's full-screen Space. The script now calls `hs.dockicon.hide()`. Confirmed working over full-screen Chrome.
+
+### Changed
+
+- Hammerspoon no longer appears in the Dock or the Command + Tab app switcher. Use the menu bar icon instead.
+
 ## [1.4.0] - 2026-11-06
 
 ### Fixed
 
-- **The flag now appears over full-screen apps.** Before, it only showed on the regular desktop, because each full-screen app runs in its own Space. Added the `fullScreenAuxiliary` window behavior.
+- **Tried to make the flag appear over full-screen apps.** Before, it only showed on the regular desktop, because each full-screen app runs in its own Space. Added the `fullScreenAuxiliary` window behavior. This alone didn't fix it; see 1.5.0.
 
 ## [1.3.0] - 2026-11-05
 
@@ -52,6 +62,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - ⌃⌥F to hide the flag, or show it next to the mouse pointer.
 - ⌃⌥C to cycle through pink, blue, yellow, and green.
 
+[1.5.0]: https://github.com/HartTx/sticky-mark/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/HartTx/sticky-mark/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/HartTx/sticky-mark/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/HartTx/sticky-mark/compare/v1.1.0...v1.2.0
