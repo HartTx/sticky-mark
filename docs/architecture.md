@@ -42,7 +42,7 @@ Two settings make it behave like a sticky note:
 | Setting | Value | Effect |
 | --- | --- | --- |
 | `level` | `hs.canvas.windowLevels.overlay` | Places the canvas above normal app windows, so it never gets covered. |
-| `behavior` | `canJoinAllSpaces`, `stationary` | Shows the canvas on every desktop (Space) and keeps it still when you switch desktops or open Mission Control. |
+| `behavior` | `canJoinAllSpaces`, `stationary`, `fullScreenAuxiliary` | Shows the canvas on every desktop (Space), keeps it still when you switch desktops or open Mission Control, and lets it appear over apps in full-screen mode. |
 
 The variable is **global** on purpose. Lua frees objects that nothing refers to. If `postitFlag` were local, Lua could free it after the script finishes, and the flag would disappear at a random moment. The same applies to `postitDrag`.
 
@@ -162,7 +162,7 @@ hs -c 'hs.reload()'
 
 - **State isn't saved.** Position, color, and direction reset when Hammerspoon restarts or reloads. The flag always starts pointing left, in pink, near the top middle of the main screen.
 - **Toggle position after rotating.** When the flag is pointing up or down, ⌃⌥F places it slightly off center from the mouse pointer, because `toggle()` uses the original box height for its offset.
-- **Full-screen apps.** macOS may hide overlay windows over some apps running in full-screen mode.
+- **Full-screen apps.** Each full-screen app is its own Space. `canJoinAllSpaces` alone doesn't include those Spaces, which is why version 1.4 added `fullScreenAuxiliary`. Without it, the flag only shows on the regular desktop.
 - **Shortcut conflicts.** If another app uses the same ⌃⌥ shortcut, whichever app registered it first usually wins.
 
 Back to [README](../README.md).

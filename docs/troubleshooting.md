@@ -43,9 +43,18 @@ Find the problem you're seeing, then follow the fix.
 
 ## The flag disappears over some apps
 
-**Cause:** The app is in full-screen mode, which can hide floating windows.
+**Cause:** The app is in full-screen mode, and the script is missing the `fullScreenAuxiliary` setting. Versions before 1.4 had this problem.
 
-- Exit full-screen mode (press **Control + Command + F**, or click the green button in the window's corner). Or use the app in a large regular window instead.
+1. Open `~/.hammerspoon/init.lua` and find the line that starts with `postitFlag:behavior`.
+2. Make sure it includes `"fullScreenAuxiliary"`:
+
+   ```lua
+   postitFlag:behavior({ "canJoinAllSpaces", "stationary", "fullScreenAuxiliary" })
+   ```
+
+3. Save the file, then click the hammer icon and click **Reload Config**.
+
+If the flag still doesn't appear, exit full-screen mode (press **Control + Command + F**) and use the app in a large regular window instead.
 
 ## The arrow keys move the flag too far or not far enough
 

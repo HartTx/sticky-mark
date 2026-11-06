@@ -17,7 +17,7 @@ Sticky Mark does the same thing digitally. A colored arrow floats on top of ever
 
 ## Features
 
-- **Always on top.** Floats above every window, on every desktop.
+- **Always on top.** Floats above every window, on every desktop, including over full-screen apps.
 - **Step-by-step movement.** Moves one line down or up with a shortcut. Hold the keys to keep moving.
 - **Drag anywhere.** Click and drag it into place.
 - **Hide and summon.** Hides with one shortcut, and comes back next to the mouse pointer.
@@ -63,6 +63,7 @@ Sticky Mark is a single [Lua script](init.lua) of about 100 lines that runs insi
 - An `hs.canvas` draws a five-point arrow polygon at the overlay window level.
 - Global `hs.hotkey` bindings move, recolor, hide, and rotate it. Rotation is a quarter-turn coordinate transform applied around the flag's center.
 - Dragging uses an `hs.eventtap` that follows the mouse from mouse-down to mouse-up.
+- The `fullScreenAuxiliary` window behavior lets it appear over full-screen apps.
 
 Read [How Sticky Mark works](docs/architecture.md) for the full design, including the rotation math and design decisions.
 

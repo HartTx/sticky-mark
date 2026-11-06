@@ -39,7 +39,8 @@ end
 local screen = hs.screen.mainScreen():frame()
 postitFlag = hs.canvas.new({ x = screen.x + screen.w / 2, y = screen.y + 200, w = W, h = H })
 postitFlag:level(hs.canvas.windowLevels.overlay)
-postitFlag:behavior({ "canJoinAllSpaces", "stationary" })
+-- fullScreenAuxiliary lets the flag appear over apps in full-screen mode
+postitFlag:behavior({ "canJoinAllSpaces", "stationary", "fullScreenAuxiliary" })
 postitFlag:appendElements({
   type = "segments",
   closed = true,
