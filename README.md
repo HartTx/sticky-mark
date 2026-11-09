@@ -90,4 +90,4 @@ I designed Sticky Mark around my own workflow and built it with [Claude Code](ht
 
 ## License
 
-[MIT](LICENSE) © 2026 Michael Hart
+[MIT](LICENSE) © 2026 Michael
